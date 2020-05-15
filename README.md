@@ -35,3 +35,53 @@ Figure 1: Sample of the data scraped from Glassdoor
 
 The text data under Pros and Cons was then cleaned and preprocessed for analysis. As the analysis is only as good as data we provide, we spent some considerable time in preprocessing the data. The process involved replacing null values, fixing contractions, removing special characters and numbers, removing stop words, tokenization using word ninja and lemmatization using NLTK.
 
+<h1>Text Analytics Workflow</h1>
+
+Once the data from Glassdoor is extracted, we must consider (or construct) a systematic methodology for analyzing the text. In figure 2 below, we provide the framework that we follow for this analysis. Armed with this framework, we perform text processing for data cleaning as described in previous section, which is in turn used as source for subsequent analysis. Once the basic exploration is done on the prepared corpus, sentiment analysis will be performed to assign the polarity of each review. 
+
+Later, n-grams are extracted from text (both pros and cons) along with its corresponding sentiment score. Top bi-grams and tri-grams are identified by the frequency of occurrence in the corpus for each company as these are the most talked in the reviews. Next, we perform Similarity score analysis to identify unique n-grams and zero in top 5 positive and negative n-grams by average sentiment score. The results are then aggregated on a comprehensive dashboard.
+
+ 
+Figure 2: Flow chart depicting the process flow for the study
+
+<h1>Exploratory Data Analysis</h1>
+
+We tried to explore the data we have gathered to gain more insights into the data before doing any textual analysis. In this process, we tried to get answers for below questions;
+•	Number of reviews per company
+•	Rating distribution by company
+•	Word count in reviews
+•	Polarity score by company
+
+<h3>1. Number of reviews per company</h3>
+
+The figure 3 below shows the total number of reviews by company along with the distribution between Current, former and employees with no status. We can observe that Amazon has a lot more reviews compared to other firms followed by IBM, Microsoft and Google. Also, among those categorized as current and former employees, current employees have more reviews for all the companies.  
+ 
+Figure 3: Distribution of reviews by company
+
+<h3>2. Rating distribution in the companies</h3>
+
+Looking at the rating distribution by company on a scale of 1-5 (5 being the best) in figure 4 below, we can conclude that all the companies were predominantly rated either 4 or 5. Interestingly, Microsoft is the only firm with more 4 ratings than 5 ratings.   
+ 
+Figure 4: Rating distribution by company
+
+<h3>3. Word count in reviews</h3>
+
+We wanted to see how long (in words) the reviews were typically to understand if we can infer some meaning from the text. A review with just few words would not have helped the analysis as most of the words would be stop words or words with no real meaning. But much to our comfort, the reviews were not too short with most falling under the range of 5-15 words for both pros and cons. Figure 5 and 6 show the distribution of words in pros and cons respectively.
+
+ 
+Figure 5: Word count in pros text
+
+ 
+Figure 6: Word count in cons text
+
+<h3>4. Polarity score distribution by company</h3>
+
+Another important analysis we wanted to explore was the distribution of sentiment score for each company. Consistent to the ratings, the sentiment score was predominantly on the positive side (Figure 7). Although, there were some anomalies, the ratings were consistent with the polarity distribution. In other words, reviews which had good ratings (4 or 5) had high positive polarity score. Figure 8 shows the distribution of polarity score for reviews that were rated 3 or below. Ideally, we would have liked to see a lower polarity score for these but almost 19,000+ reviews show high polarity score of >0.6.
+
+   
+   
+Figure 7: Polarity score distribution for each review by company
+
+ 
+Figure 8: Polarity score of reviews that were rated 3 or below.
+
